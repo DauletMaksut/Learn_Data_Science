@@ -1,10 +1,10 @@
 import pandas as pd
 p1 = pd.Series({"Name": "Daulet",
 		  "Age": 20,
-		  "Self-lover": "Absolutely"
+		  "Loves": "Absolutely"
 })
-p2 = pd.Series({"Name":"Maia","Age": 24,"Self-lover": "Only"})
-dts = pd.DataFrame([p1, p2], index = ["Shaize", "Maize"])
+p2 = pd.Series({"Name":"Maia","Age": 24,"Loves": "Only"})
+dts = pd.DataFrame([p1, p2], index = ["haize", "Maize"])
 print(dts)
 print("Fucking experiment")
 print(dts.loc['Maize'])
