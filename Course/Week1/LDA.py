@@ -7,6 +7,7 @@ from sklearn.model_selection import cross_val_score
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
+from sklearn.metrics import roc_curve
 
 
 
@@ -28,6 +29,7 @@ def line(clf):
     return xx, yy
 xx, yy = line(clf)
 comparison = np.vstack((clf.predict(X), y)).T
+plt.subplot(1)
 plt.title('LDA with line')
 plt.plot(xx, yy, 'k-')
 plt.plot(X[I,0],X[I,1],'.', color='g')
