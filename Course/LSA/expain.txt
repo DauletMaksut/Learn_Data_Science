@@ -1,0 +1,7 @@
+I made three types of feature reduction: PCA, TSNE, KMeans.
+Oh i want to point that by supervised learning i got ribust data which gave me
+no information about two most information.
+So by comparing supervised and unsupervised learning, i want to stop on
+unsupervised as the data that i got from that was most clear.
+
+So with green i showed importance and green appearence of feature
