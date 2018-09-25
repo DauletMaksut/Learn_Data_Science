@@ -9,7 +9,7 @@ from scipy.cluster.hierarchy import linkage
 from scipy.cluster.hierarchy import fcluster
 from heapq import heappush, heappop
 from itertools import count
-
+from scipy.cluster.hierarchy import dendrogram
 import networkx as nx
 
 
@@ -214,23 +214,32 @@ G = nx.Graph()
 for i in range (1 ,21):
     G.add_node (i)
 G.add_edges_from (tt.values)
-A = nx.adjacency_matrix (G). todense ()
-plt.subplot(1, 3, 1)
-plt.imshow (A , interpolation ='none')
+# A = nx.adjacency_matrix (G). todense ()
+# plt.subplot(1, 3, 1)
+# plt.imshow (A , interpolation ='none')
 
-S = np . zeros ((20 ,20))
+# S = np . zeros ((20 ,20))
+# for i in range (1 ,21):
+#     for j in range (1 ,21):
+#             S[i - 1,j - 1]= nx.shortest_path_length(G , source =i , target =j )
+# Y = squareform (S)
+# Z = linkage(Y , method = 'average')
+# plt.subplot(1, 3, 2)
+# plt.imshow (S , interpolation ='none')
+
+# new_G = betweenness_centrality(G)
+# # print(new_G)
+# nodes = [ i for i in range(1,21)]
+# value = [new_G[x] for x in range(1,21) ]
+# plt.subplot(1, 3, 3)
+# plt.plot (nodes , value, '.' )
+# plt.show()
+
+W = nx.all_pairs_shortest_path_length(G)
+S = np.zeros((20 ,20))
 for i in range (1 ,21):
     for j in range (1 ,21):
-            S[i - 1,j - 1]= nx.shortest_path_length(G , source =i , target =j )
-Y = squareform (S)
-Z = linkage(Y , method = 'average')
-plt.subplot(1, 3, 2)
-plt.imshow (S , interpolation ='none')
-
-new_G = betweenness_centrality(G)
-print(new_G)
-nodes = [ i for i in range(1,21)]
-value = [new_G[x] for x in range(1,21) ]
-plt.subplot(1, 3, 3)
-plt.plot (nodes , value, '.' )
-plt.show()
+        S[i-1][j-1] = W[i][j]
+Y = squareform(S)
+Z = linkage (Y , method =  'average')
+dendrogram(Z)
