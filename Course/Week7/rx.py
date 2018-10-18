@@ -1,4 +1,6 @@
 from rx import Observable, Observer
+# from Observer import Observer, Observable
+
 def push_five_strings ( observer ):
     observer.on_next ("Alpha")
     observer.on_next ("Beta")
